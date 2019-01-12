@@ -12,6 +12,10 @@ export interface ISearchResults extends Action {
   results?: SearchResult[];
 }
 
+export interface ISearchClear extends Action {
+  type: 'SEARCH_CLEAR';
+}
+
 export interface IAddToFavourites extends Action {
   type: 'FAVOURITES_ADD';
   title: string;
@@ -25,5 +29,6 @@ export interface IRemoveFromFavourites extends Action {
 export type AppActions =
   | ISearchSubmit
   | ISearchResults
+  | ISearchClear
   | IAddToFavourites
   | IRemoveFromFavourites;
