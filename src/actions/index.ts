@@ -24,7 +24,7 @@ export interface IRemoveFromFavourites extends IAction {
   title: string;
 }
 
-export type IActions =
+export type AppActions =
   | ISearchSubmit
   | ISearchResults
   | IAddToFavourites

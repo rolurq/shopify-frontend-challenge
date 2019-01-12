@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux';
 
-import favourites from './favourites';
-import search from './search';
+import favourites, { FavouritesState } from './favourites';
+import search, { SearchState } from './search';
+
+export interface AppState {
+  favourites: FavouritesState;
+  search: SearchState;
+}
 
 export default combineReducers({
   favourites,

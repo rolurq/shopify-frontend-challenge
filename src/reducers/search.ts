@@ -7,7 +7,7 @@ export interface SearchState {
 
 export default function search(
   state: SearchState = { results: undefined },
-  action: IActions,
+  action: AppActions,
 ): SearchState {
   switch (action.type) {
     case 'SEARCH_SUBMIT':

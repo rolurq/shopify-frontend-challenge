@@ -1,4 +1,4 @@
-import { IActions } from '../actions';
+import { AppActions } from '../actions';
 
 export interface FavouritesState {
   // use Map to take advantage of its hasing mechanism
@@ -7,7 +7,7 @@ export interface FavouritesState {
 
 export default function favourites(
   state: FavouritesState = { selection: new Map<string, boolean>() },
-  action: IActions,
+  action: AppActions,
 ): FavouritesState {
   switch (action.type) {
     case 'FAVOURITES_ADD':
