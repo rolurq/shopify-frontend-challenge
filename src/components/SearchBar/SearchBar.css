@@ -13,9 +13,15 @@
   border-radius: 2.5px;
 }
 
-button {
+.SearchBar-button {
   background: #23965f;
   border: none;
   border-radius: 2.5px;
   outline: none;
+  cursor: pointer;
+}
+
+.SearchBar-button > i.icon-search {
+  color: white;
+  font-size: 3em;
 }
