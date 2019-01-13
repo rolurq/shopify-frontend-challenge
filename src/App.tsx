@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 
+import Favourites from './components/Favourites';
 import SearchBar from './components/SearchBar';
 
 class App extends React.Component {
@@ -13,7 +14,7 @@ class App extends React.Component {
         <section className="App-intro">
           <SearchBar />
         </section>
-        <footer>Favourites</footer>
+        <Favourites />
       </article>
     );
   }
