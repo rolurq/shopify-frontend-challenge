@@ -19,6 +19,11 @@
   border-radius: 2.5px;
   outline: none;
   cursor: pointer;
+  box-shadow: 0 3px 3px -2px #aaaaaa;
+}
+
+.SearchBar-button:active {
+  box-shadow: none;
 }
 
 .SearchBar-button > i.icon-search {
