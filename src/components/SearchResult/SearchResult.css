@@ -1,0 +1,24 @@
+.SearchResult {
+  display: flex;
+  padding: 0 20px 40px;
+}
+
+.SearchResult > section {
+  flex: 1 0;
+  text-align: left;
+}
+
+.SearchResult i.icon-star {
+  margin-right: 10px;
+  color: #aaaaaa;
+  font-size: large;
+  vertical-align: text-bottom;
+}
+
+.SearchResult i.icon-star.marked {
+  color: #23965f;
+}
+
+.SearchResult-body ul {
+  margin: 0;
+}
