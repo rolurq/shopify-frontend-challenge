@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component<Props, State> {
     };
   }
 
-  public render() {
+  render() {
     return (
       <form className="SearchBar-bar" onSubmit={this.handleSubmit}>
         <input

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default class SearchResult extends React.Component<Props> {
-  public render() {
+  render() {
     const { title, body, favourite } = this.props;
 
     return (
