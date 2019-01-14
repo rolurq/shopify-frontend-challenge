@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { URLSearchParams } from 'url';
 import { AppThunkAction, ISearchClear } from '.';
+import { stringify as qstringify } from 'querystring';
 
 import { SearchResult } from '../models';
 
@@ -13,9 +14,8 @@ export function searchSubmit(text: string): AppThunkAction {
     dispatch({ type: 'SEARCH_SUBMIT', text });
 
     const response = await axios.get<SearchResponse>('/api/search', {
-      params: new URLSearchParams({
-        keywords: text.split(/\s/),
-      }),
+      params: { keywords: text.split(/\s/) },
+      paramsSerializer: params => qstringify(params),
     });
 
     dispatch({ type: 'SEARCH_RESULTS', results: response.data.results });
