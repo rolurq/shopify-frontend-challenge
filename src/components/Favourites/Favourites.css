@@ -1,4 +1,12 @@
 .Favourites {
+  /* sticky could also work, it's hard to know from the picture */
+  /* position: fixed;
+  bottom: 0;
+  width: 100%; */
+  background: white;
+}
+
+.Favourites-container {
   background-color: #23965f1a;
   text-align: left;
 }
