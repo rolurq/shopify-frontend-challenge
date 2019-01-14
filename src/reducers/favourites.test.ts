@@ -1,20 +1,23 @@
+import { SearchResult } from '../models';
 import favourites from './favourites';
+
+const testResult = { title: 'An entry', body: 'body' };
 
 it('adds to selection', () => {
   const state = favourites(undefined, {
-    title: 'An entry',
+    result: testResult,
     type: 'FAVOURITES_ADD',
   });
-  expect(state.selection.get('An entry')).toBe(true);
+  expect(state.selection.get(testResult.title)).toBe(testResult);
 });
 
 it('removes from selection', () => {
-  const selection = new Map<string, boolean>();
-  selection.set('An entry', true);
+  const selection = new Map<string, SearchResult>();
+  selection.set(testResult.title, testResult);
 
   const state = favourites(
     { selection },
-    { type: 'FAVOURITES_REMOVE', title: 'An entry' },
+    { type: 'FAVOURITES_REMOVE', key: testResult.title },
   );
-  expect(state.selection.has('An entry')).toBe(false);
+  expect(state.selection.has(testResult.title)).toBe(false);
 });

@@ -1,15 +1,16 @@
 import { IAddToFavourites, IRemoveFromFavourites } from '.';
+import { SearchResult } from '../models';
 
-export function addToFavourites(title: string): IAddToFavourites {
+export function addToFavourites(result: SearchResult): IAddToFavourites {
   return {
-    title,
+    result,
     type: 'FAVOURITES_ADD',
   };
 }
 
-export function removeFromFavourites(title: string): IRemoveFromFavourites {
+export function removeFromFavourites(key: string): IRemoveFromFavourites {
   return {
-    title,
+    key,
     type: 'FAVOURITES_REMOVE',
   };
 }

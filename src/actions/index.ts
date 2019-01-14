@@ -20,12 +20,12 @@ export interface ISearchClear extends Action {
 
 export interface IAddToFavourites extends Action {
   type: 'FAVOURITES_ADD';
-  title: string;
+  result: SearchResult;
 }
 
 export interface IRemoveFromFavourites extends Action {
   type: 'FAVOURITES_REMOVE';
-  title: string;
+  key: string;
 }
 
 export type AppActions =
