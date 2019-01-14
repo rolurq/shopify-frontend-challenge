@@ -7,7 +7,7 @@ export interface StateProps {
   results?: ResultModel[];
 }
 
-export default class SearchResultList extends React.Component<StateProps> {
+export default class SearchResultList extends React.PureComponent<StateProps> {
   render() {
     const { results } = this.props;
     return results
