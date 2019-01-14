@@ -1,6 +1,7 @@
 const http = require('http');
 const querystring = require('querystring');
 const fs = require('fs');
+const mime = require('mime-types');
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
 
@@ -93,6 +94,15 @@ const server = http.createServer(async (request, response) => {
       break;
     default:
       // serve static files
+      const filePath = `./build/${path === '/' ? 'index.html' : path}`;
+      const contentType = mime.lookup(filePath);
+      try {
+        const content = await readFileAsync(filePath);
+        response.writeHead(200, { 'Content-Type': contentType });
+        response.write(content);
+      } catch (error) {
+        response.statusCode = error.code === 'ENOENT' ? 404 : 500;
+      }
       break;
   }
   response.end();
