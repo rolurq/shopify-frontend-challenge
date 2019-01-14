@@ -1,6 +1,8 @@
 import { Action } from 'redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import { SearchResult } from '../models';
+import { AppState } from '../reducers';
 
 export interface ISearchSubmit extends Action {
   type: 'SEARCH_SUBMIT';
@@ -32,3 +34,6 @@ export type AppActions =
   | ISearchClear
   | IAddToFavourites
   | IRemoveFromFavourites;
+
+export type AppThunkAction = ThunkAction<void, AppState, void, AppActions>;
+export type AppThunkDispatch = ThunkDispatch<AppState, void, AppActions>;

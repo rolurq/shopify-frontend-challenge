@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 
+import { AppThunkDispatch } from '../../actions';
 import { clearSearch, searchSubmit } from '../../actions/search';
 import { AppState } from '../../reducers';
 import SearchBar, { DispatchProps } from './SearchBar';
@@ -9,7 +9,7 @@ function mapStateToProps(state: AppState) {
   return {};
 }
 
-function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
+function mapDispatchToProps(dispatch: AppThunkDispatch): DispatchProps {
   return {
     submitSearch(text: string) {
       dispatch(searchSubmit(text));
