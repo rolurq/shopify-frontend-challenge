@@ -4,10 +4,15 @@ import './SearchResult.css';
 interface Props {
   title: string;
   body: string;
-  favourite?: boolean;
 }
 
-export default class SearchResult extends React.Component<Props> {
+const defaultProps = Object.freeze({ favourite: false });
+
+export default class SearchResult extends React.Component<
+  Props & typeof defaultProps
+> {
+  static readonly defaultProps = defaultProps;
+
   render() {
     const { title, body, favourite } = this.props;
 
