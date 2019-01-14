@@ -1,29 +1,62 @@
+// import * as DOMPurify from 'dompurify';
 import * as React from 'react';
 import './SearchResult.css';
 
-interface Props {
-  title: string;
-  body: string;
+import { SearchResult as ResultModel } from '../../models';
+
+export interface DispatchProps {
+  markFavourite(result: ResultModel): void;
+  unmarkFavourite(key: string): void;
 }
 
-const defaultProps = Object.freeze({ favourite: false });
+export interface StateProps {
+  favourites: Map<string, ResultModel>;
+}
 
-export default class SearchResult extends React.Component<
-  Props & typeof defaultProps
-> {
-  static readonly defaultProps = defaultProps;
+interface OwnProps {
+  result: ResultModel;
+}
+
+type Props = DispatchProps & StateProps & OwnProps;
+
+export default class SearchResult extends React.Component<Props> {
+  htmlDecode(content: string) {
+    const e = document.createElement('div');
+    e.innerHTML = content;
+    return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue!;
+  }
+
+  handleStarClick = () => {
+    const { result, markFavourite, unmarkFavourite } = this.props;
+    if (this.isFavourite()) {
+      unmarkFavourite(result.title);
+    } else {
+      markFavourite(result);
+    }
+    this.setState({}); // perform a re-rendering to change the star color
+  };
+
+  isFavourite() {
+    const { favourites, result } = this.props;
+    return favourites.has(result.title);
+  }
 
   render() {
-    const { title, body, favourite } = this.props;
+    const { result } = this.props;
 
     return (
       <article className="SearchResult">
         <section>
-          <i className={`icon-star${favourite ? ' marked' : ''}`} />
-          {title}
+          <i
+            className={`icon-star${this.isFavourite() ? ' marked' : ''}`}
+            onClick={this.handleStarClick}
+          />
+          {result.title}
         </section>
         <section
-          dangerouslySetInnerHTML={{ __html: body }}
+          dangerouslySetInnerHTML={{
+            __html: this.htmlDecode(result.body),
+          }}
           className="SearchResult-body"
         />
       </article>
