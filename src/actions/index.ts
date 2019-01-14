@@ -35,5 +35,14 @@ export type AppActions =
   | IAddToFavourites
   | IRemoveFromFavourites;
 
-export type AppThunkAction = ThunkAction<void, AppState, void, AppActions>;
-export type AppThunkDispatch = ThunkDispatch<AppState, void, AppActions>;
+export type AppThunkAction<A extends AppActions = AppActions> = ThunkAction<
+  void,
+  AppState,
+  void,
+  A
+>;
+export type AppThunkDispatch<A extends AppActions = AppActions> = ThunkDispatch<
+  AppState,
+  void,
+  A
+>;

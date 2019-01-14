@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { URLSearchParams } from 'url';
-import { AppThunkAction, ISearchClear } from '.';
 import { stringify as qstringify } from 'querystring';
+import { AppThunkAction, ISearchClear, ISearchResults, ISearchSubmit } from '.';
 
 import { SearchResult } from '../models';
 
@@ -9,7 +8,9 @@ interface SearchResponse {
   results: SearchResult[];
 }
 
-export function searchSubmit(text: string): AppThunkAction {
+export function searchSubmit(
+  text: string,
+): AppThunkAction<ISearchSubmit | ISearchResults> {
   return async dispatch => {
     dispatch({ type: 'SEARCH_SUBMIT', text });
 
