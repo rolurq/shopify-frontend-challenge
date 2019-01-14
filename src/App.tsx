@@ -3,7 +3,7 @@ import './App.css';
 
 import Favourites from './components/Favourites';
 import SearchBar from './components/SearchBar';
-import SearchResult from './components/SearchResult';
+import SearchResultList from './components/SearchResultList';
 
 class App extends React.Component {
   public render() {
@@ -14,11 +14,7 @@ class App extends React.Component {
         </header>
         <section className="App-intro">
           <SearchBar />
-          <SearchResult
-            title="Garbage (wrapping and tying)"
-            body=" &lt;li&gt;Place item in the &lt;strong&gt;Garbage Bin.&lt;/strong&gt;&lt;/li&gt;
-            &lt;/ul&gt;"
-          />
+          <SearchResultList />
         </section>
         <Favourites />
       </article>
