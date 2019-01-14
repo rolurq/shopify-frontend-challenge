@@ -13,13 +13,9 @@ interface State {
 }
 
 export default class SearchBar extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      searchText: '',
-    };
-  }
+  readonly state = {
+    searchText: '',
+  };
 
   render() {
     return (
