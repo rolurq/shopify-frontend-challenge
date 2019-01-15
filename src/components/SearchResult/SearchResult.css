@@ -3,6 +3,12 @@
   padding: 0 20px 40px;
 }
 
+@media screen and (max-width: 768px) {
+  .SearchResult {
+    flex-direction: column;
+  }
+}
+
 .SearchResult > section {
   flex: 1 0;
   text-align: left;
