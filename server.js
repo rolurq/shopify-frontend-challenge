@@ -47,25 +47,27 @@ async function makeSearch(response, keywords) {
   // read data from dataFuture, only waits for parsing the first time
   const data = await dataFuture;
   const results = [];
-  for (let i = 0; i < data.length; i++) {
+  document: for (let i = 0; i < data.length; i++) {
     const element = data[i];
-    let count = 0;
+    let similarity = 0;
 
     for (let j = 0; j < keywords.length; j++) {
-      const key = keywords[j];
-      if (element.keywords.includes(key)) {
-        count++;
+      const matches = element.keywords.match(new RegExp(keywords[j], 'ig'));
+      if (!matches) {
+        // the keyword is not present, reject document
+        continue document;
       }
+      // similarity here if the total number of all keywords
+      // found in the document
+      similarity += matches.length;
     }
 
-    if (count > 0) {
-      sortPush(results, {
-        // select fields to reduce response size
-        body: element.body,
-        priority: count,
-        title: element.title,
-      });
-    }
+    sortPush(results, {
+      // select fields to reduce response size
+      body: element.body,
+      priority: similarity,
+      title: element.title,
+    });
   }
 
   const body = JSON.stringify({ results });
