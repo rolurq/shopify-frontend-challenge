@@ -35,12 +35,10 @@ export type AppActions =
   | IAddToFavourites
   | IRemoveFromFavourites;
 
-export type AppThunkAction<A extends AppActions = AppActions> = ThunkAction<
-  Promise<A>,
-  AppState,
-  void,
-  A
->;
+export type AppThunkAction<
+  A extends AppActions = AppActions,
+  R = void
+> = ThunkAction<Promise<R>, AppState, void, A>;
 export type AppThunkDispatch<A extends AppActions = AppActions> = ThunkDispatch<
   AppState,
   void,
