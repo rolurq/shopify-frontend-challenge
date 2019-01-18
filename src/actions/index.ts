@@ -36,7 +36,7 @@ export type AppActions =
   | IRemoveFromFavourites;
 
 export type AppThunkAction<A extends AppActions = AppActions> = ThunkAction<
-  void,
+  Promise<A>,
   AppState,
   void,
   A
